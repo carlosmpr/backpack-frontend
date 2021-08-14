@@ -2,6 +2,8 @@ import React from "react";
 import Locations from "./Content/Locations";
 import Activities from "./Content/Activities";
 import Users from "./Content/Users";
+import MyActivities from "./Content/MyActivities";
+import MyFriend from "./Content/MyFriend";
 import {useSelector} from 'react-redux'
 export default function Content() {
 
@@ -14,6 +16,13 @@ console.log(seleccted)
 
       case "Users":
         return <Users />
+
+      case "MyActivity":
+       return <MyActivities />
+
+       case "MyFriends":
+         return <MyFriend />
+
     
       default:
         return (<Locations />)

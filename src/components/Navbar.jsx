@@ -43,7 +43,7 @@ export default function Navbar() {
         </svg>
       </NavItems>
 
-      <NavItems info={"My Activity"}>
+      <NavItems info={"MyActivity"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5  text-red-400"
@@ -58,7 +58,7 @@ export default function Navbar() {
         </svg>
       </NavItems>
 
-      <NavItems info={"My friends"}>
+      <NavItems info={"MyFriends"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6  text-purple-400"

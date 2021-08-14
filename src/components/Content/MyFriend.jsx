@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Banner from "../Banner";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import ActivityCard from "../Cards/ActivityCard";
-export default function MyActivities() {
+import UserCard from '../Cards/UserCard'
+export default function MyFriend() {
 //   const token = useSelector((state) => state.login.token.token);
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
@@ -11,7 +11,7 @@ const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJjYXJsb3NAZW1haWwuY29t
   useEffect(() => {
     (async function () {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/my_activities `, {
+        const response = await axios.get(`http://127.0.0.1:5000/my_friends `, {
           headers: {
             Authorization: token,
           },
@@ -29,10 +29,8 @@ const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJjYXJsb3NAZW1haWwuY29t
   }
   return (
     <>
-      <Banner msg={"My Activities"} />
-      {data.map((item) => (
-        <ActivityCard key={item.name} {...item} />
-      ))}
+      <Banner msg={"Connect with Users"} />
+      {data.map((item) => <UserCard key={item.name} {...item}/>)}
     </>
   );
 }
