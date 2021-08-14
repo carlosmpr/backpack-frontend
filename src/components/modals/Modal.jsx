@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Modal() {
+export default function Modal({children, close, w="w-screen"}) {
   return (
-    <div className="h-screen  w-screen top-0 right-5  p-9 absolute rounded-tr-lg shadow-3xl w-1/5  flex  flex-col items-center  backdrop-filter backdrop-blur-lg bg-opacity-25  z-50">
- <div className=" cursor-pointer z-50" >
+    <div className={`h-screen  ${w} top-0 right-5  p-9 absolute rounded-tr-lg shadow-3xl w-1/5  flex  flex-col items-center  backdrop-filter backdrop-blur-lg bg-opacity-25  z-50`}>
+ <div className=" cursor-pointer z-50"  onClick={close}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 "
@@ -19,7 +19,7 @@ export default function Modal() {
             />
           </svg>
         </div>
-        <input type="date" className="my-12 p-9 rounded-xl"/>
+      {children}
 
     </div>
   );

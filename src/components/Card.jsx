@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default function Card() {
   return (
     <div class="p-6 max-w-sm mx-auto rounded-xl shadow-md flex items-center ">

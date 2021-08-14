@@ -9,7 +9,7 @@ export default function Navbar() {
         alt=""
       />
       <p className="font-sans font-bold text-gray-700">My name </p>
-      <NavItems info={"locations"}>
+      <NavItems info={"Locations"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6  text-blue-400"
@@ -43,7 +43,7 @@ export default function Navbar() {
         </svg>
       </NavItems>
 
-      <NavItems info={"Activity"}>
+      <NavItems info={"My Activity"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-5 w-5  text-red-400"
@@ -58,7 +58,7 @@ export default function Navbar() {
         </svg>
       </NavItems>
 
-      <NavItems info={"Activity"}>
+      <NavItems info={"My friends"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6  text-purple-400"
@@ -75,7 +75,7 @@ export default function Navbar() {
         </svg>
       </NavItems>
 
-      <NavItems info={"Activity"}>
+      <NavItems info={"Acount"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
