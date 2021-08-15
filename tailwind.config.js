@@ -12,7 +12,13 @@ module.exports = {
       'primary': '#3E70FB',
      'secondary': '#031E52',
      'danger': '#e3342f',
-     'white':'#ffffff'
+     'white':'#ffffff',
+     'gray-400': 'rgba(156, 163, 175, 1)',
+     'gray-500':' rgba(55, 65, 81,1)',
+     'red-400':'rgba(248, 113, 113,1)',
+     'green-400':'rgba(52, 211, 153,1)',
+     'blue-400': 'rgba(96, 165, 250,1)'
+
    },
     extend: {},
   },

@@ -31,21 +31,8 @@ export default function DetailCard({
         className="h-screen rounded-3xl w-2/6 top-0 right-5  absolute rounded-tr-lg shadow-3xl w-1/5  flex  flex-col items-center  backdrop-filter backdrop-blur-lg bg-opacity-75 bg-white z-50"
         style={{ marginTop: "-5px" }}
       >
-        <div className="w-full h-5/6 absolute">
-          <svg
-            width="100%"
-            height="auto"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1440 -120"
-          >
-            <path
-              fill="#5000ca"
-              fill-opacity="1"
-              d="M0,160L80,176C160,192,320,224,480,245.3C640,267,800,277,960,282.7C1120,288,1280,288,1360,288L1440,288L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
-            ></path>
-          </svg>
-        </div>
-        <div className="h-full w-full  p-9 flex flex-col space-y-8 ">
+        
+        <div className="h-full w-full  p-9 flex flex-col space-y-4 ">
           <div className=" cursor-pointer z-50" onClick={close}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -69,22 +56,23 @@ export default function DetailCard({
 
           <h3 className="text-lg font-bold">Likes</h3>
           <Star />
-          <p className="text-justify">
-            <h3 className="text-lg font-bold">Description</h3>
+          <h3 className="text-lg font-bold">Description</h3>
+          <p className="text-justify text-gray-500">
             {description}
           </p>
-          <p className="text-justify">
-            <h3 className="text-lg font-bold">Location</h3>
+          <h3 className="text-lg font-bold">Location</h3>
+          <p className="text-justify text-gray-500">
+           
             {`${state} ${directions}`}
           </p>
           <div className="flex w-full justify-around">
             {date ? (
-              <p className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer">
-                date:{date}
+              <p className="text-2xl  text-red-400 r">
+                Date:{date}
               </p>
             ) : (
               <p
-                className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer"
+                className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer text-gray-500"
                 onClick={() => {
                   setShow(false);
                   setPlan(!plan);
@@ -95,7 +83,7 @@ export default function DetailCard({
             )}
 
             <p
-              className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer"
+              className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer text-gray-500"
               onClick={() => {
                 setPlan(false);
                 setShow(!show);

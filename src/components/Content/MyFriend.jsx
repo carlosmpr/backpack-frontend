@@ -29,7 +29,7 @@ const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJjYXJsb3NAZW1haWwuY29t
   }
   return (
     <>
-      <Banner msg={"Connect with Users"} />
+      <Banner msg={"Friends"} />
       {data.map((item) => <UserCard key={item.name} {...item}/>)}
     </>
   );

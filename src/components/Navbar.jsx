@@ -1,14 +1,15 @@
 import React from "react";
 import NavItems from "./NavItems/NavItems";
+import Buttons from "./Buttons/Buttons";
 export default function Navbar() {
   return (
-    <div className="h-screen rounded-tr-lg shadow-2xl w-1/5 bg-white p-9 flex  flex-col items-center space-y-8 backdrop-filter backdrop-blur-lg bg-opacity-70" >
+    <div className="h-screen rounded-tr-lg shadow-2xl w-1/5 bg-white p-9 flex  flex-col items-center space-y-11 backdrop-filter backdrop-blur-lg bg-opacity-40" >
       <img
         className="inline-block h-22 w-22 rounded-full ring-2 ring-white"
         src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
         alt=""
       />
-      <p className="font-sans font-bold text-gray-700">My name </p>
+      <p className="font-sans font-bold ">My name </p>
       <NavItems info={"Locations"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +62,7 @@ export default function Navbar() {
       <NavItems info={"MyFriends"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6  text-purple-400"
+          className="h-6 w-6  "
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -78,7 +79,7 @@ export default function Navbar() {
       <NavItems info={"Acount"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
+          className="h-6 w-6 text-gray-400"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -91,9 +92,9 @@ export default function Navbar() {
           />
         </svg>
       </NavItems>
-      <div>
-          Sign Out
-      </div>
+      <Buttons text="Sign Out"/>
+         
+    
     </div>
   );
 }

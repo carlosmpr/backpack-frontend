@@ -2,6 +2,7 @@ import React from "react";
 import DetailCard from "./DetailCard";
 import Star from "../Star";
 import PlanActivity from "../PlanActivity/PlanActivity";
+import CategoryImage from "../Images/CategoryImage";
 export default function ActivityCard(props) {
   let data
   const [details, setDetails] = React.useState(false);
@@ -20,31 +21,20 @@ export default function ActivityCard(props) {
  }else{
    data = {...props}
  }
+
+ console.log(data.category)
   return (
     <>
     
       {plan ? <PlanActivity id={data.id} name={data.name} close={closePlan}/>:null}
       {details ? <DetailCard close={close} {...data} date={props.date}/> : null}
 
-      <div className="col-start-3 col-span-8 row-span-0 h-24 flex  items-center justify-evenly  bg-white gap-4 rounded-xl shadow-md shadow-md backdrop-filter backdrop-blur-lg bg-opacity-50 hover:bg-opacity-75">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 text-green-400 text-4xl"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-          />
-        </svg>
-        <h1 className="text-xl text-secondary  font-bold">{data.name}</h1>
+      <div className="col-start-3 col-span-8 row-span-0 h-24 flex  items-center justify-evenly  bg-white gap-4 rounded-xl shadow-md shadow-md backdrop-filter backdrop-blur-lg bg-opacity-50 hover:bg-opacity-75 text-gray-500">
+       <CategoryImage category={data.category} />
+        <h1 className="text-xl   font-bold">{data.name}</h1>
      <Star />
 
-     {props.activity ? <p className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer" onClick={()=> setPlan(true)}>
+     {props.activity ? <p className="text-2xl text-red-400 " >
           {props.date}
         </p>: <p className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer" onClick={()=> setPlan(true)}>
           Plan
