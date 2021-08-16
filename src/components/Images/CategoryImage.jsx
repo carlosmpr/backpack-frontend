@@ -15,7 +15,7 @@ export default function CategoryImage({ category }) {
         return swim;
       case 'eating':
         return eating;
-      case 'running':
+      case 'walking':
         return running;
       case 'touring':
         return touring;

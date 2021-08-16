@@ -38,7 +38,7 @@ export default function Activities() {
   }
   return (
     <>
-      <Banner msg="Activities" />
+      <Banner msg={data.name} />
       {data.activities.map((item) => (
         <ActivityCard key={item.name} {...item} />
       ))}

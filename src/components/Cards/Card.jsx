@@ -19,7 +19,7 @@ export default function Card({ name, image, color, id }) {
         dispatch(changePanel("Activities"));
       }}
     >
-      <img src={image} className="w-full h-full" alt={name} />
+      <img src={image} className="w-full h-full" alt={image} />
 
       <div
         className={`w-full h-full transition-all  ${

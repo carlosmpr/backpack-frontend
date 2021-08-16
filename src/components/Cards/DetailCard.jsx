@@ -10,6 +10,7 @@ export default function DetailCard({
   state,
   id,
   date,
+  image
 }) {
   const [show, setShow] = useState(false);
   const [plan, setPlan] = useState(false);
@@ -49,7 +50,9 @@ export default function DetailCard({
               />
             </svg>
           </div>
-          <div className="h-2/4 w-4/5 bg-white self-center rounded-3xl shadow-2xl z-50"></div>
+          <div className="h-2/4 w-4/5 bg-white self-center rounded-3xl shadow-2xl z-50 overflow-hidden">
+          <img src={image} className="w-full h-full" alt={image} />
+          </div>
           <h1 className="text-4xl text-blue-800 self-center font-bold">
             {name}
           </h1>
