@@ -93,8 +93,6 @@ export default function Navbar() {
         </svg>
       </NavItems>
       <Buttons text="Sign Out"/>
-         
-    
     </div>
   );
 }
