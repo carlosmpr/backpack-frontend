@@ -2,10 +2,14 @@ import React,{useEffect, useState} from "react";
 import NavItems from "./NavItems/NavItems";
 import Buttons from "./Buttons/Buttons";
 import axios from 'axios'
+import {useDispatch, useSelector} from 'react-redux'
+import { setUser } from "../features/counter/loginSignupSlice";
 export default function Navbar() {
-  
+ const dispatch = useDispatch()
+ 
+ const user  = useSelector(state => state.login.user)
 const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6OCwiZW1haWwiOiJ0ZXN0ODgyQGVtYWlsIiwibmFtZSI6InRlc3Q4ODIiLCJsYXN0X25hbWUiOm51bGwsInBob25lIjoiOTk5NDQ0NTU1NSIsInN3aW1taW5nIjp0cnVlLCJoaWtpbmciOnRydWUsIndhbGtpbmciOnRydWUsImVhdGluZyI6dHJ1ZSwidG91cmluZyI6dHJ1ZSwiY2FtcGluZyI6dHJ1ZX0.vUAC2DXGcuwge9jpsb2LfkancxbAB2u1jYtYecAIXIM"
-const [user, setUser] = useState({featured_image:''})
+
 useEffect(() => {
   (async function () {
     try {
@@ -14,18 +18,19 @@ useEffect(() => {
           Authorization: token,
         },
       });
-      setUser(response.data)
+      dispatch(setUser(response.data))
      
     } catch (e) {
       console.error(e);
     }
   })();
 }, []);
+console.log(user)
   return (
     <div className="h-screen rounded-tr-lg shadow-2xl w-1/5 bg-white p-9 flex  flex-col items-center space-y-11 backdrop-filter backdrop-blur-lg bg-opacity-40" >
       <img
         className="inline-block h-22 w-22 rounded-full ring-2 ring-white"
-        src={user.featured_image.url}
+        src={'user.featured_image.url'}
         alt=""
       />
       <p className="font-sans font-bold ">My name </p>
