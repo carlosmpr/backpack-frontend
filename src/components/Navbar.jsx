@@ -1,39 +1,58 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import NavItems from "./NavItems/NavItems";
 import Buttons from "./Buttons/Buttons";
-import axios from 'axios'
-import {useDispatch, useSelector} from 'react-redux'
-import { setUser } from "../features/counter/loginSignupSlice";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser, setToken } from "../features/counter/loginSignupSlice";
+import { useHistory } from "react-router-dom";
 export default function Navbar() {
- const dispatch = useDispatch()
- 
- const user  = useSelector(state => state.login.user)
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6OCwiZW1haWwiOiJ0ZXN0ODgyQGVtYWlsIiwibmFtZSI6InRlc3Q4ODIiLCJsYXN0X25hbWUiOm51bGwsInBob25lIjoiOTk5NDQ0NTU1NSIsInN3aW1taW5nIjp0cnVlLCJoaWtpbmciOnRydWUsIndhbGtpbmciOnRydWUsImVhdGluZyI6dHJ1ZSwidG91cmluZyI6dHJ1ZSwiY2FtcGluZyI6dHJ1ZX0.vUAC2DXGcuwge9jpsb2LfkancxbAB2u1jYtYecAIXIM"
+  let history = useHistory();
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.login.token);
+  const user = useSelector((state) => state.login.user);
+  // const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJjYXJsb3NAZW1haWwuY29tIiwibmFtZSI6IkNhcmxvcyIsImxhc3RfbmFtZSI6IlBvbGFuY28iLCJwaG9uZSI6Ijk5OS05OTktOTk5OSIsInN3aW1taW5nIjp0cnVlLCJoaWtpbmciOnRydWUsIndhbGtpbmciOnRydWUsImVhdGluZyI6dHJ1ZSwidG91cmluZyI6dHJ1ZSwiY2FtcGluZyI6dHJ1ZX0.4YFlAeSlwtpV8K26PXzLQ7eGW56V-6CLhrJbyiKEUFE"
 
-useEffect(() => {
-  (async function () {
-    try {
-      const response = await axios.get(`http://127.0.0.1:5000/me `, {
-        headers: {
-          Authorization: token,
-        },
-      });
-      dispatch(setUser(response.data))
-     
-    } catch (e) {
-      console.error(e);
+  useEffect(() => {
+    const findToken = localStorage.getItem("token");
+    if (findToken) {
+      dispatch(setToken(findToken));
     }
-  })();
-}, []);
-console.log(user)
+    if (token) {
+      (async function () {
+        try {
+          const response = await axios.get(`http://127.0.0.1:5000/me `, {
+            headers: {
+              Authorization: token,
+            },
+          });
+          dispatch(setUser(response.data));
+        } catch (e) {
+          console.error(e);
+        }
+      })();
+    }
+
+    if (!token && !findToken) {
+      history.push("/");
+    }
+  }, [token]);
+
+  console.log(user);
+  if (!token) {
+    return <div>Loading.....</div>;
+  }
+
+  if (!user) {
+    return <div>Loading.....</div>;
+  }
   return (
-    <div className="h-screen rounded-tr-lg shadow-2xl w-1/5 bg-white p-9 flex  flex-col items-center space-y-11 backdrop-filter backdrop-blur-lg bg-opacity-40" >
+    <div className="h-screen rounded-tr-lg shadow-2xl w-1/5 bg-white p-9 flex  flex-col items-center space-y-11 backdrop-filter backdrop-blur-lg bg-opacity-40">
       <img
         className="inline-block h-22 w-22 rounded-full ring-2 ring-white"
-        src={'user.featured_image.url'}
+        src={user.featured_image ? user.featured_image.url : user.avatar}
         alt=""
       />
-      <p className="font-sans font-bold ">My name </p>
+      <p className="font-sans font-bold ">{user.name} </p>
       <NavItems info={"Locations"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +135,11 @@ console.log(user)
           />
         </svg>
       </NavItems>
-      <Buttons text="Sign Out"/>
+      <Buttons text="Sign Out" click={()=> {
+        localStorage.removeItem('token')
+        dispatch(setToken(null))
+        dispatch(setUser(null))
+      }}/>
     </div>
   );
 }

@@ -8,8 +8,9 @@ export default function Locations() {
   const colors =["red", 'green' , 'blue', 'yellow', 'purple', 'indigo']
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJjYXJsb3NAZW1haWwuY29tIiwibmFtZSI6IkNhcmxvcyIsImxhc3RfbmFtZSI6IlBvbGFuY28iLCJwaG9uZSI6Ijk5OS05OTktOTk5OSIsInN3aW1taW5nIjp0cnVlLCJoaWtpbmciOnRydWUsIndhbGtpbmciOnRydWUsImVhdGluZyI6dHJ1ZSwidG91cmluZyI6dHJ1ZSwiY2FtcGluZyI6dHJ1ZX0.4YFlAeSlwtpV8K26PXzLQ7eGW56V-6CLhrJbyiKEUFE"
+ const token  = useSelector(state => state.login.token)
   useEffect(() => {
+    if(token){
     (async function () {
       try {
         const response = await axios.get(`http://127.0.0.1:5000/locations `, {
@@ -23,11 +24,10 @@ const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJjYXJsb3NAZW1haWwuY29t
       } catch (e) {
         console.error(e);
       }
-    })();
-  }, []);
-  if(loading){
-      return <p>Loading ....</p>
-  }
+    })()};
+  }, [token]);
+  
+  
   return (
     <>
       <Banner msg={"Places"} />

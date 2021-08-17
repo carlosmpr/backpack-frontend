@@ -22,7 +22,7 @@ export default function Reviews({close, id}) {
               Authorization: token,
             },
           });
-          console.log(response.data.activity_reviews)
+          
           setData(response.data.activity_reviews)
           setLoading(false)
         } catch (e) {

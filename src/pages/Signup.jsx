@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import TextHeaders from "../components/Texts/TextHeaders";
 import Input from "../components/Input";
 import Badge from "../components/Cards/Badge";
@@ -6,7 +6,6 @@ import Buttons from "../components/Buttons/Buttons";
 import { useDispatch } from "react-redux";
 import { setToken } from "../features/counter/loginSignupSlice";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
 import AddImage from "../components/Images/AddImage";
 import Avatar from "../components/Avatar";
 export default function Signup() {
@@ -30,6 +29,13 @@ export default function Signup() {
     camping: false,
     eating: false,
   });
+
+  useEffect(() => {
+    const findToken = localStorage.getItem("token");
+    if (findToken) {
+      history.push('/Myaccount')
+    }
+  }, [])
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -57,8 +63,8 @@ export default function Signup() {
 
       // const res = await axios.post('http://127.0.0.1:5000/users', body, {'content-type': 'multipart/form-data'})
        const result = await res.json()
-       console.log(result)
-      dispacth(setToken(res.data))
+       console.log(result.token)
+      dispacth(setToken(result.token))
       history.push("/Myaccount");
     } catch (err) {
       console.log(err);
@@ -74,7 +80,7 @@ export default function Signup() {
         onSubmit={handleOnSubmit}
       >
         {image ? (
-          <Avatar image={URL.createObjectURL(image)} w="w-42" />
+          <Avatar image={URL.createObjectURL(image)} w="w-42" h="h-42"/>
         ) : (
           <AddImage
             controller={image}
