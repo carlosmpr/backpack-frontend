@@ -1,12 +1,31 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import NavItems from "./NavItems/NavItems";
 import Buttons from "./Buttons/Buttons";
+import axios from 'axios'
 export default function Navbar() {
+  
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6OCwiZW1haWwiOiJ0ZXN0ODgyQGVtYWlsIiwibmFtZSI6InRlc3Q4ODIiLCJsYXN0X25hbWUiOm51bGwsInBob25lIjoiOTk5NDQ0NTU1NSIsInN3aW1taW5nIjp0cnVlLCJoaWtpbmciOnRydWUsIndhbGtpbmciOnRydWUsImVhdGluZyI6dHJ1ZSwidG91cmluZyI6dHJ1ZSwiY2FtcGluZyI6dHJ1ZX0.vUAC2DXGcuwge9jpsb2LfkancxbAB2u1jYtYecAIXIM"
+const [user, setUser] = useState({featured_image:''})
+useEffect(() => {
+  (async function () {
+    try {
+      const response = await axios.get(`http://127.0.0.1:5000/me `, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      setUser(response.data)
+     
+    } catch (e) {
+      console.error(e);
+    }
+  })();
+}, []);
   return (
     <div className="h-screen rounded-tr-lg shadow-2xl w-1/5 bg-white p-9 flex  flex-col items-center space-y-11 backdrop-filter backdrop-blur-lg bg-opacity-40" >
       <img
         className="inline-block h-22 w-22 rounded-full ring-2 ring-white"
-        src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+        src={user.featured_image.url}
         alt=""
       />
       <p className="font-sans font-bold ">My name </p>
