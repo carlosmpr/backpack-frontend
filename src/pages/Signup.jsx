@@ -7,6 +7,7 @@ import {useDispatch} from 'react-redux'
 import { setToken } from "../features/counter/loginSignupSlice";
 import { useHistory } from "react-router-dom";
 import axios from "axios"
+import AddImage from "../components/Images/AddImage";
 export default function Signup() {
     const dispacth = useDispatch()
     let history = useHistory();
@@ -46,6 +47,7 @@ export default function Signup() {
   return (
     <div className="w-screen h-screen flex flex-col items-center space-y-4">
       <TextHeaders title="Join Now" />
+      <AddImage />
       <Input
         type="text"
         placeholder="Name"
