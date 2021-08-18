@@ -46,6 +46,7 @@ export default function Signup() {
     formData.append("email", user.email);
     formData.append("password", user.password);
     formData.append("name", user.name);
+    formData.append("last_name", user.last_name);
     formData.append("phone", user.phone);
     formData.append("swimming", interests.swimming);
     formData.append("hiking", interests.hiking);
@@ -65,6 +66,7 @@ export default function Signup() {
        const result = await res.json()
        console.log(result.token)
       dispacth(setToken(result.token))
+      localStorage.setItem('token', result.token)
       history.push("/Myaccount");
     } catch (err) {
       console.log(err);
