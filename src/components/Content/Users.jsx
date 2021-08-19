@@ -30,7 +30,7 @@ export default function Users() {
   return (
     <>
       <Banner msg={"Connect with Users"} />
-      {data.map((item) => <UserCard key={item.name} {...item}/>)}
+      {data.map((item) => <UserCard key={item.name } {...item} token={token}/>)}
     </>
   );
 }
