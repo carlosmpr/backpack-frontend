@@ -157,8 +157,10 @@ export default function Navbar() {
           text="Sign Out"
           click={() => {
             localStorage.removeItem("token");
+            dispatch(changePanel('locations'))
             dispatch(setToken(null));
             dispatch(setUser(null));
+            
           }}
         />
       </div>
