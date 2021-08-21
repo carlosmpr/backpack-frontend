@@ -3,11 +3,12 @@ import Banner from "../Banner";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import ActivityCard from "../Cards/ActivityCard";
+import InvitationNavItem from "../Invitations/InvitationsNavItem";
 export default function MyActivities() {
   const token = useSelector((state) => state.login.token);
+  const user = useSelector((state) => state.login.user);
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)
-// const token = "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZW1haWwiOiJjYXJsb3NAZW1haWwuY29tIiwibmFtZSI6IkNhcmxvcyIsImxhc3RfbmFtZSI6IlBvbGFuY28iLCJwaG9uZSI6Ijk5OS05OTktOTk5OSIsInN3aW1taW5nIjp0cnVlLCJoaWtpbmciOnRydWUsIndhbGtpbmciOnRydWUsImVhdGluZyI6dHJ1ZSwidG91cmluZyI6dHJ1ZSwiY2FtcGluZyI6dHJ1ZX0.4YFlAeSlwtpV8K26PXzLQ7eGW56V-6CLhrJbyiKEUFE"
   useEffect(() => {
     (async function () {
       try {
@@ -33,7 +34,11 @@ export default function MyActivities() {
   }
   return (
     <>
+    
       <Banner msg={"My Activities"} />
+      <div className="absolute top-72 right-32">
+      <InvitationNavItem text={"Invitations"}/>
+      </div>
       {data.map((item) => (
         <ActivityCard key={item.name} {...item} />
       ))}

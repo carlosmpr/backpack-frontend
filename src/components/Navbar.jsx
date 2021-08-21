@@ -5,8 +5,10 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, setToken } from "../features/counter/loginSignupSlice";
 import { useHistory } from "react-router-dom";
+import { changePanel } from "../features/counter/locationsSlice";
 import FriendRequestNavItem from "./FriendRequest/FriendRequestNavItem";
 import FriendRequest from "./FriendRequest/FriendRequest";
+import InvitationNavItem from "./Invitations/InvitationsNavItem";
 export default function Navbar() {
   let history = useHistory();
   const dispatch = useDispatch();
@@ -38,6 +40,8 @@ export default function Navbar() {
     }
   }, [token]);
 
+
+  console.log(user)
   if (!token) {
     return <div>Loading.....</div>;
   }
@@ -62,7 +66,11 @@ export default function Navbar() {
           alt=""
         />
         <p className="font-sans font-bold ">{user.name} </p>
+        <div className="flex w-full justify-around">
         <FriendRequestNavItem setOpen={setOpen}/>
+        <InvitationNavItem setOpen={() => dispatch(changePanel('MyActivity'))}/>
+        </div>
+      
         <NavItems info={"Locations"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
