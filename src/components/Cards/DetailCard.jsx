@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Reviews from "../Reviews/Reviews";
 import PlanActivity from "../PlanActivity/PlanActivity";
 import Star from "../Star";
+import InviteFriends from "../InviteFriend/InviteFriends";
 export default function DetailCard({
   close,
   name,
@@ -10,10 +11,12 @@ export default function DetailCard({
   state,
   id,
   date,
-  image
+  image,
+  user_activity
 }) {
   const [show, setShow] = useState(false);
   const [plan, setPlan] = useState(false);
+  const [inviteFriend, setInviteFriend] =useState(false)
   const closeReviews = () => {
     setShow(false);
   };
@@ -22,8 +25,14 @@ export default function DetailCard({
     setPlan(false);
   };
 
+
+  const closeInvite = () => {
+    setInviteFriend(false)
+  }
+
   return (
     <>
+    {inviteFriend ? <InviteFriends user_activity={user_activity} close={closeInvite}/> : null}
       {plan ? (
         <PlanActivity close={closePlan} id={id} name={name} m="mr-96" />
       ) : null}
@@ -34,6 +43,7 @@ export default function DetailCard({
       >
         
         <div className="h-full w-full  p-9 flex flex-col space-y-4 ">
+          <div className="flex w-full justify-between">
           <div className=" cursor-pointer z-50" onClick={close}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +59,11 @@ export default function DetailCard({
                 d="M6 18L18 6M6 6l12 12"
               />
             </svg>
+          </div>
+          {date ?   <div className="p-4 cursor-pointer bg-indigo-300 text-white rounded-xl shadow-xl" onClick={()=> setInviteFriend(true)}>
+          <p >Invite Friends</p>
+          </div>: null }
+        
           </div>
           <div className="h-2/4 w-4/5 bg-white self-center rounded-3xl shadow-2xl z-50 overflow-hidden">
           <img src={image} className="w-full h-full" alt={image} />

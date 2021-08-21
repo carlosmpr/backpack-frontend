@@ -34,7 +34,7 @@ export default function MyFriend() {
   return (
     <>
       <Banner msg={"Friends"} />
-      {data.map((item) => <UserCard key={item.name} {...item}/>)}
+      {data.map((item) => <UserCard key={item.name} {...item.user}/>)}
     </>
   );
 }

@@ -21,14 +21,14 @@ export default function ActivityCard(props) {
     data = { ...props };
   }
 
-  console.log(data.category);
+  console.log(props);
   return (
     <>
       {plan ? (
         <PlanActivity id={data.id} name={data.name} close={closePlan} />
       ) : null}
       {details ? (
-        <DetailCard close={close} {...data} date={props.date} />
+        <DetailCard close={close} {...data} date={props.date} user_activity={props.id}/>
       ) : null}
 
       <div className="col-start-3 col-span-8 row-span-0 h-24 flex  items-center justify-evenly  bg-white gap-4 rounded-xl shadow-md shadow-md backdrop-filter backdrop-blur-lg bg-opacity-50 hover:bg-opacity-75 text-gray-500">
