@@ -3,6 +3,8 @@ import Reviews from "../Reviews/Reviews";
 import PlanActivity from "../PlanActivity/PlanActivity";
 import Star from "../Star";
 import InviteFriends from "../InviteFriend/InviteFriends";
+import FriendsGoing from "../FriendsGoing/FriendsGoing";
+import Buttons from "../Buttons/Buttons";
 export default function DetailCard({
   close,
   name,
@@ -17,6 +19,8 @@ export default function DetailCard({
   const [show, setShow] = useState(false);
   const [plan, setPlan] = useState(false);
   const [inviteFriend, setInviteFriend] =useState(false)
+  const [friendsGoing, setFriendsGoing] =useState(false)
+
   const closeReviews = () => {
     setShow(false);
   };
@@ -30,8 +34,15 @@ export default function DetailCard({
     setInviteFriend(false)
   }
 
+
+  const closefriendsGoing = () => {
+    setFriendsGoing(false)
+  }
+
+
   return (
     <>
+    {friendsGoing ? <FriendsGoing user_activity={user_activity} close={closefriendsGoing}/> : null}
     {inviteFriend ? <InviteFriends user_activity={user_activity} close={closeInvite}/> : null}
       {plan ? (
         <PlanActivity close={closePlan} id={id} name={name} m="mr-96" />
@@ -110,6 +121,8 @@ export default function DetailCard({
               {show ? "Close" : "Reviews"}
             </p>
           </div>
+          {date ?  <Buttons text="Friends Invited" click={()=> setFriendsGoing(true)}></Buttons> : null }
+         
         </div>
       </div>
     </>
