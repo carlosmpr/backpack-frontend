@@ -54,7 +54,7 @@ export default function MyActivities() {
       </div>
      
       {invitations ? <UserInvitations /> :  data.map((item) => (
-        <ActivityCard key={item.name} {...item} />
+        <ActivityCard key={item.name} {...item} m={"my-4"}/>
       ))}
      
     </>

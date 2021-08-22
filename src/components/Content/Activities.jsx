@@ -40,7 +40,7 @@ export default function Activities() {
     <>
       <Banner msg={data.name} />
       {data.activities.map((item) => (
-        <ActivityCard key={item.name} {...item} />
+        <ActivityCard key={item.name} {...item} m={"my-4"}/>
       ))}
     </>
   );

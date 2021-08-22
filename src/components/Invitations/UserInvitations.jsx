@@ -14,7 +14,7 @@ export default function UserInvitations() {
    
             activity_invitation.map(item => <>
         
-            <ActivityCard {...item.detail} date={item.date} user_invited ={item.user} status={item.status} invitaion_id={item.invitaion_id}/>
+            <ActivityCard {...item.detail} date={item.date} user_invited ={item.user} status={item.status} invitaion_id={item.invitaion_id} m={"my-12"}/>
           
             </>)
 

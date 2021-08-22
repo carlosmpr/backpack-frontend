@@ -11,7 +11,7 @@ export default function Card({ name, image, color, id }) {
   const [hover, setHover] = React.useState(false);
   return (
     <div
-      className=" relative  col-span-4 row-span-0 flex h-72  items-center justify-center  bg-purple-700  cursor-pointer rounded-xl  shadow-3xl backdrop-filter backdrop-blur-lg bg-opacity-25 overflow-hidden shadow-md "
+      className=" relative my-4 col-span-4 row-span-0 flex h-72  items-center justify-center  bg-purple-700  cursor-pointer rounded-xl  shadow-3xl backdrop-filter backdrop-blur-lg bg-opacity-25 overflow-hidden shadow-md "
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={() => {

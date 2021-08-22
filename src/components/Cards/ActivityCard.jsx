@@ -5,9 +5,12 @@ import PlanActivity from "../PlanActivity/PlanActivity";
 import CategoryImage from "../Images/CategoryImage";
 import Avatar from "../Avatar";
 import axios from "axios";
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
+import { setUser } from "../../features/counter/loginSignupSlice";
+
 export default function ActivityCard(props) {
   const token = useSelector((state) => state.login.token);
+ const dispatch = useDispatch()
   let data;
   const [details, setDetails] = React.useState(false);
   const [plan, setPlan] = React.useState(false);
@@ -43,7 +46,7 @@ export default function ActivityCard(props) {
         }
       );
 
-      console.log(response.data)
+      dispatch(setUser(response.data))
       setStatus(responseStatus)
     } catch (error) {
       console.log(error);
@@ -63,7 +66,7 @@ export default function ActivityCard(props) {
         />
       ) : null}
 
-      <div className="relative  col-start-3 col-span-8 row-span-0 h-24 flex  items-center justify-evenly  bg-white gap-4 rounded-xl shadow-md shadow-md backdrop-filter backdrop-blur-lg bg-opacity-50 hover:bg-opacity-75 text-gray-500">
+      <div className={`relative ${props.m} col-start-3 col-span-8 row-span-0 h-24 flex  items-center justify-evenly  bg-white  rounded-xl shadow-md shadow-md backdrop-filter backdrop-blur-lg bg-opacity-50 hover:bg-opacity-75 text-gray-500`}>
         {props.user_invited ? (
           <>
           <div className="absolute -top-16 left-0 flex justify-center items-center">

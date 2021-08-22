@@ -29,7 +29,7 @@ console.log(seleccted)
     }
   }
   return (
-    <div className="grid grid-cols-12  p-10 w-full  h-screen space-y-4 gap-x-6 overflow-y-scroll">
+    <div className="grid grid-cols-12  p-10 w-full  h-screen  gap-x-6 overflow-y-scroll">
       
      
      {dashboardContent()}
