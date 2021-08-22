@@ -26,10 +26,12 @@ export default function ActivityCard(props) {
   if (props.activity) {
     data = { ...props.activity };
   } else {
-    console.log("the props", props);
+  
     data = { ...props };
   }
 
+
+  console.log("user activities",props.join_activity)
   const responseToFriend = async (responseStatus) => {
     try {
       const response = await axios.post(
@@ -62,7 +64,7 @@ export default function ActivityCard(props) {
           close={close}
           {...data}
           date={props.date}
-          user_activity={props.id}
+          user_activity={props.join_activity ? props.join_activity : props.id}
         />
       ) : null}
 

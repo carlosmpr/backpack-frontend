@@ -8,13 +8,14 @@ export default function UserInvitations() {
     const token = useSelector((state) => state.login.token);
   const user = useSelector((state) => state.login.user);
   const {activity_invitation} =user
+  const invitations = [...activity_invitation].reverse()
 
-  console.log(activity_invitation)
+  console.log("the activities",activity_invitation)
     return (
    
-            activity_invitation.map(item => <>
+      invitations.map(item => <>
         
-            <ActivityCard {...item.detail} date={item.date} user_invited ={item.user} status={item.status} invitaion_id={item.invitaion_id} m={"my-12"}/>
+            <ActivityCard {...item.detail} join_activity={item.join_activity} date={item.date} user_invited ={item.user} status={item.status} invitaion_id={item.invitaion_id} m={"my-20"}/>
           
             </>)
 

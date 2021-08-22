@@ -18,7 +18,6 @@ export default function MyActivities() {
             Authorization: token,
           },
         });
-        console.log(response.data)
         setData(response.data)
         setLoading(false)
       } catch (e) {
