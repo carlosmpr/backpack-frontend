@@ -4,11 +4,15 @@ import Modal from "../modals/Modal";
 import Input from "../Input";
 import Buttons from "../Buttons/Buttons";
 import axios from "axios";
-export default function Chat({ close, channelId , token}) {
+import Avatar from "../Avatar";
+import ChatItem from "../Chat/ChatItem";
+import {useSelector} from 'react-redux'
+export default function Chat({ close, channelId, token, name, image }) {
+  const user = useSelector((state) => state.login.user);
   const [messages, setMessages] = useState(channelId.messages);
   const [comment, setComment] = useState("");
   const cable = useRef();
-  const messagesEndRef = useRef(null)
+  const messagesEndRef = useRef(null);
   useEffect(() => {
     if (!cable.current) {
       cable.current = createConsumer("ws://localhost:5000/cable");
@@ -24,7 +28,7 @@ export default function Chat({ close, channelId , token}) {
       received(data) {
         console.log("thedata", data);
         setMessages([...messages, JSON.parse(data)]);
-        scrollToBottom()
+        scrollToBottom();
       },
       disconnected() {
         console.log("disconnected");
@@ -43,8 +47,8 @@ export default function Chat({ close, channelId , token}) {
   }, [messages]);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const submitComment = async () => {
     try {
@@ -52,7 +56,7 @@ export default function Chat({ close, channelId , token}) {
         `http://127.0.0.1:5000/messages `,
         {
           chat_room_id: channelId.id,
-          user_id: 1,
+          user_id: user.id,
           message: comment,
         },
         {
@@ -61,21 +65,25 @@ export default function Chat({ close, channelId , token}) {
           },
         }
       );
-      setComment("")
+      setComment("");
     } catch (e) {
       console.error(e);
     }
   };
-console.log(messages)
+  console.log(messages);
   return (
     <Modal close={close}>
-      <div className="bg-white w-5/12 h-4/6  rounded-lg mt-14 p-9 flex flex-col  bg-opacity-70 overflow-y-scroll gap-y-8">
+      <div className="absolute ml-9 left-0 top-0 mt-3 flex items-center">
+      <Avatar w="w-32" h="h-36" name={"..."} image={image}/>
+      <p className="ml-3 font-bold text-4xl">{name}</p>
+      </div>
+      <div className="bg-white w-11/12 h-5/6  rounded-lg mt-14 p-9 flex flex-col  bg-opacity-0 overflow-y-scroll gap-y-8">
         {messages.map((item) => (
-          <p>{item.message}</p>
+          <ChatItem text={item.message} user_id={item.user_id} created_at={item.created_at}/>
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <div className=" w-5/12 h-12  mt-14 flex gap-x-6">
+      <div className=" w-5/6 h-12  mt-14 flex gap-x-6">
         <Input
           type="text"
           placeholder="Review"
@@ -83,7 +91,10 @@ console.log(messages)
           controller={comment}
           change={(e) => setComment(e.target.value)}
           opacity="bg-opacity-70 "
-          w="w-3/4"
+          w="w-full"
+          Keypress={(e)=>{ if(e.key === 'Enter'){
+            submitComment()
+          }}}
         />
         <Buttons text="Comment" click={submitComment} />
       </div>

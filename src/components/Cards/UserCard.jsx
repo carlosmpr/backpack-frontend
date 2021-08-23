@@ -58,7 +58,8 @@ export default function UserCard(props) {
 
   return (
     <>
-    {channel ? <Chat close={closeChannel} channelId={channel} token={token}/> : null}
+    {channel ? <Chat close={closeChannel} channelId={channel} token={token} name={`${name} ${last_name}`}
+            image={featured_image ? featured_image.url : avatar}/> : null}
     <div className=" h-96 w-full my-4 rounded-3xl  col-span-4 row-span-0 top-0 right-5  rounded-3xl shadow-lg   flex  flex-col items-center  backdrop-filter bg-primary backdrop-blur-lg backdrop-opacity-70 bg-opacity-10 overflow-hidden">
       <div className="h-96 w-full items-center  flex flex-col  ">
         <div className="m-3 h-1/3">

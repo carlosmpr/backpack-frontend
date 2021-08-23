@@ -1,10 +1,12 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import TextHeaders from "../components/Texts/TextHeaders";
 import Input from "../components/Input";
 import Buttons from "../components/Buttons/Buttons";
 import { useDispatch } from "react-redux";
 import { setToken } from "../features/counter/loginSignupSlice";
 import { useHistory } from "react-router-dom";
+import Error from "../components/Errormsg/Error";
+import Success from "../components/Success/Success";
 export default function Login() {
   const dispacth = useDispatch();
   let history = useHistory();
@@ -12,16 +14,16 @@ export default function Login() {
     password: "",
     email: "",
   });
-
-
-  
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
     const findToken = localStorage.getItem("token");
     if (findToken) {
-      history.push('/Myaccount')
+      history.push("/Myaccount");
     }
-  }, [])
+  }, []);
   const handleChange = (e) => {
+    setError(false)
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
@@ -38,15 +40,25 @@ export default function Login() {
       });
       const result = await res.json();
       console.log(result.token);
-      localStorage.setItem('token', result.token)
-      dispacth(setToken(result.token));
-      history.push("/Myaccount");
+      if (result.token) {
+        setSuccess(true)
+        setTimeout(() => {
+          localStorage.setItem("token", result.token);
+          dispacth(setToken(result.token));
+          history.push("/Myaccount");
+        }, 200);
+       
+      }else{
+        setError(true)
+        setTimeout(() => {
+          setError(false)
+        }, 1000);
+      }
     } catch (err) {
-      console.log(err);
+      setError(true)
     }
   };
 
-  
   return (
     <div className="w-screen h-screen  flex flex-col  items-center justify-center space-y-4">
       <TextHeaders title="Login" />
@@ -68,7 +80,9 @@ export default function Login() {
           controller={user.password}
           change={handleChange}
         />
-        <Buttons text="Login" />
+        {success ? <Success msg="Login Succesfuly"/> : <Buttons text="Login" />}
+        
+        {error ? <Error msg="Check email and Password" /> : null}
       </form>
     </div>
   );
