@@ -27,6 +27,8 @@ export default function Locations() {
     })()};
   }, [token]);
   
+
+  console.log(token)
   
   return (
     <>
