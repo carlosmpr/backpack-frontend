@@ -5,6 +5,7 @@ import Users from "./Content/Users";
 import MyActivities from "./Content/MyActivities";
 import MyFriend from "./Content/MyFriend";
 import {useSelector} from 'react-redux'
+import Account from "./Content/Account";
 export default function Content() {
 
 const seleccted = useSelector((state)=> state.location.nav)
@@ -22,6 +23,9 @@ console.log(seleccted)
 
        case "MyFriends":
          return <MyFriend />
+
+        case "Account":
+          return <Account />
 
     
       default:

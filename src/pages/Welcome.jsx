@@ -6,6 +6,8 @@ import About from "../components/Welcome/About";
 import Signup from "./Signup";
 
 import { useHistory } from "react-router-dom";
+import Plan from "../components/Welcome/Plan";
+import Friends from "../components/Welcome/Friends";
 export default function Welcome() {
   let history = useHistory();
   useEffect(() => {
@@ -19,6 +21,8 @@ export default function Welcome() {
       <TopBar />
       <Hero />
       <Features />
+      <Plan />
+      <Friends />
       <About />
       <Signup />
     </div>
