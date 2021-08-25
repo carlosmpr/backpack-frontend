@@ -22,7 +22,7 @@ export default function TopBar() {
         </div>
         <i
           class="fas fa-bars md:hidden cursor-pointer"
-          onClick={() => setShow(true)}
+          onClick={() => setShow(!show)}
         ></i>
         <ul className="flex justify-evenly items-center w-3/6 text-secondary hidden md:inline-flex">
           <a href="#about">

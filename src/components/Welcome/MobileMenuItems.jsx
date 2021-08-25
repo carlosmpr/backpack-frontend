@@ -7,7 +7,7 @@ export default function MenuItems({ close }) {
   let history = useHistory();
   return (
     <Modal close={close}>
-      <ul className="flex flex-col w-full h-full bg-white justify-evenly items-center  rounded-lg shadow-3xl    backdrop-filter backdrop-blur-lg bg-opacity-70  z-50">
+      <ul className="flex flex-col ml-12 w-full h-full bg-primary justify-evenly items-center  rounded-lg shadow-3xl  text-white  backdrop-filter backdrop-blur-lg bg-opacity-80  z-50">
         <a href="#about" onClick={() => close()}>
           <li className="font-bold text-3xl">About</li>
         </a>
