@@ -45,11 +45,11 @@ export default function DetailCard({
     {friendsGoing ? <FriendsGoing user_activity={user_activity} close={closefriendsGoing}/> : null}
     {inviteFriend ? <InviteFriends user_activity={user_activity} close={closeInvite}/> : null}
       {plan ? (
-        <PlanActivity close={closePlan} id={id} name={name} m="mr-96" />
+        <PlanActivity close={closePlan} id={id} name={name} m="md:mr-96" />
       ) : null}
       {show ? <Reviews close={closeReviews} id={id} /> : null}
       <div
-        className="h-screen rounded-3xl w-2/6 top-0 right-5  absolute rounded-tr-lg shadow-3xl w-1/5  flex  flex-col items-center  backdrop-filter backdrop-blur-lg bg-opacity-75 bg-white z-50"
+        className="h-screen w-11/12 rounded-3xl md:w-2/6 top-0 right-5  absolute rounded-tr-lg shadow-3xl w-1/5  flex  flex-col items-center  backdrop-filter backdrop-blur-lg bg-opacity-75 bg-white z-10"
         style={{ marginTop: "-5px" }}
       >
         

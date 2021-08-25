@@ -57,12 +57,14 @@ export default function Reviews({close, id}) {
       return <p>Loading ....</p>
   }
     return (
-      <Modal close={close} >
-          <div className="bg-white w-5/12 h-4/6 mr-96 rounded-lg mt-14 p-9 flex flex-col  bg-opacity-70 overflow-y-scroll gap-y-8">
+      <Modal close={close} z={"z-30 md:z-10"}>
+          <div className="bg-white md:w-5/12 ml-10 md:h-4/6 md:mr-96 rounded-lg md:mt-14 p-9 flex flex-col  bg-opacity-70 overflow-y-scroll gap-y-8 ">
             {data.map(item => <ReviewItem key={item.name} {...item}/>)}
           </div>
-          <div className=" w-5/12 h-12 mr-96 mt-14 flex gap-x-6">
-            <Input type="text" placeholder="Review" name="comment" controller={comment} change={(e)=> setComment(e.target.value)} opacity="bg-opacity-70 " w="w-3/4"/>
+          <div className=" w-10/12 md:w-5/12 h-12 md:mr-80 mt-14 flex gap-x-6">
+            <Input type="text" placeholder="Review" name="comment" controller={comment} change={(e)=> setComment(e.target.value)} opacity="bg-opacity-70 " w="w-3/4"   Keypress={(e)=>{ if(e.key === 'Enter'){
+            submitReview()
+          }}}/>
             <Buttons text="Comment" click={submitReview}/>
           </div>
           

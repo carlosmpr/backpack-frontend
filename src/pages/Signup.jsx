@@ -75,7 +75,7 @@ export default function Signup() {
 
   console.log(image);
   return (
-    <div className="w-screen h-screen ">
+    <div className="w-screen ">
       <TextHeaders title="Join Now" />
       <form
         className="flex flex-col items-center space-y-4"

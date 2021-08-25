@@ -9,7 +9,7 @@ import touring from '../../assets/images/touring.svg'
 import camping from '../../assets/images/camping.svg'
 export default function Features() {
   return (
-    <div className="w-screen h-screen  p-4" id="features">
+    <div className="w-screen md:h-screen -mt-36 md:mt-0 p-4" id="features">
       <TextHeaders title="Find activities in different locations" />
       <div className="w-full justify-evenly flex gap-x-4 gap-y-8 flex-wrap mt-16">
       <InfoCard image={hiking} text={"Hiking"}/>

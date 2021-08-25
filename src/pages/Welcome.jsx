@@ -25,6 +25,8 @@ export default function Welcome() {
       <Friends />
       <About />
       <Signup />
+<div className="w-full h-28"></div>
+      
     </div>
   );
 }

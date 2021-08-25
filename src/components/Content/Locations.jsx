@@ -34,6 +34,7 @@ export default function Locations() {
     <>
       <Banner msg={"Places"} />
       {data.map((item,index) => <Card key={item.name} {...item} color={colors[index]}/>)}
+      <br></br>
     </>
   );
 }

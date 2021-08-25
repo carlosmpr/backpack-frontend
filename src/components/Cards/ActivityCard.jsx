@@ -68,7 +68,7 @@ export default function ActivityCard(props) {
         />
       ) : null}
 
-      <div className={`relative ${props.m} col-start-3 col-span-8 row-span-0 h-24 flex  items-center justify-evenly  bg-white  rounded-xl shadow-md shadow-md backdrop-filter backdrop-blur-lg bg-opacity-50 hover:bg-opacity-75 text-gray-500`}>
+      <div className={`relative ${props.m} col-span-12 md:col-start-3 md:col-span-8 row-span-0 h-24 flex  items-center justify-evenly  bg-white  rounded-xl shadow-md shadow-md backdrop-filter backdrop-blur-lg bg-opacity-50 hover:bg-opacity-75 text-gray-500 space-x-3`}>
         {props.user_invited ? (
           <>
           <div className="absolute -top-16 left-0 flex justify-center items-center">
@@ -82,7 +82,7 @@ export default function ActivityCard(props) {
             />
             <div>
             <p>{props.user_invited.name} {props.user_invited.last_name}</p>
-            <p className="text-xl">Do you want to go with me and my friends to? <span className="bg-primary cursor-pointer bg-opacity-40 rounded-full p-1 text-white" onClick={()=> {
+            <p className="md:text-xl">Do you want to go with me and my friends to? <span className="bg-primary cursor-pointer bg-opacity-40 rounded-full p-1 text-white" onClick={()=> {
            
               responseToFriend('Going')
             }}>Yes</span> <span className="font-bold cursor-pointer" onClick={()=> {
@@ -92,26 +92,26 @@ export default function ActivityCard(props) {
             </div>
           </div>
 
-          <div className="absolute top-16 "><p>Status: <span className="p-2 bg-primary text-white rounded-full">{status}</span></p></div>
+          <div className="absolute top-16 "><p>Status: <span className="text-sm md:text-md p-2 bg-primary text-white rounded-full">{status}</span></p></div>
           </>
         ) : null}
 
         <CategoryImage category={data.category} />
-        <h1 className="text-xl   font-bold">{data.name}</h1>
+        <h1 className="text-md md:text-xl   font-bold">{data.name}</h1>
         <Star />
 
         {props.date ? (
-          <p className="text-2xl text-red-400 ">{props.date}</p>
+          <p className=" text-sm md:text-2xl text-red-400 ">{props.date}</p>
         ) : (
           <p
-            className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer"
+            className="md:text-2xl text-blue-800 hover:text-red-400 cursor-pointer"
             onClick={() => setPlan(true)}
           >
             Plan
           </p>
         )}
         <p
-          className="text-2xl text-blue-800 hover:text-red-400 cursor-pointer"
+          className="md:text-2xl text-blue-800 hover:text-red-400 cursor-pointer"
           onClick={() => setDetails(!details)}
         >
           {details ? "Hide DEtails" : "Details"}

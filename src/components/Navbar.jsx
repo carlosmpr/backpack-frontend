@@ -59,13 +59,13 @@ export default function Navbar() {
      {open ? (
     <FriendRequest close={close} requests={user.friend_request} />
   ) : null}
-      <div className="h-screen rounded-tr-lg shadow-2xl w-1/5 bg-white p-9 flex  flex-col items-center space-y-11 backdrop-filter backdrop-blur-lg bg-opacity-40">
+      <div className="w-screen p-6 md:h-screen rounded-tr-lg shadow-2xl md:w-1/5 bg-white md:p-9 flex  md:flex-col items-center md:space-y-11 backdrop-filter backdrop-blur-lg bg-opacity-40">
         <img
-          className="inline-block h-22 w-22 rounded-full ring-2 ring-white"
+          className=" h-8 w-8 md:h-32 md:w-32 rounded-full ring-2 ring-white"
           src={user.featured_image ? user.featured_image.url : user.avatar}
           alt=""
         />
-        <p className="font-sans font-bold ">{user.name} </p>
+        <p className="font-sans font-bold hidden md:inline-flex ">{user.name} </p>
         <div className="flex w-full justify-around">
         <FriendRequestNavItem setOpen={setOpen}/>
         <InvitationNavItem setOpen={() => dispatch(changePanel('MyActivity'))}/>
@@ -153,6 +153,18 @@ export default function Navbar() {
             />
           </svg>
         </NavItems>
+<div className="md:hidden">
+        <NavItems  >
+        <i class="fas fa-sign-out-alt" onClick={() => {
+            localStorage.removeItem("token");
+            dispatch(changePanel('locations'))
+            dispatch(setToken(null));
+            dispatch(setUser(null));
+            
+          }}></i>
+          </NavItems>
+          </div>
+        <div className="hidden md:inline-flex">
         <Buttons
           text="Sign Out"
           click={() => {
@@ -163,6 +175,7 @@ export default function Navbar() {
             
           }}
         />
+        </div>
       </div>
     </>
   );

@@ -31,10 +31,10 @@ export default function PlanActivity({ close, id ,name, m }) {
     }
   };
   return (
-    <Modal close={close}>
-      <div className={`bg-white w-5/12 h-4/6 ${m} rounded-lg mt-14 p-9 flex flex-col gap-y-7 justify-center items-center bg-opacity-70`}>
+    <Modal close={close} z={"z-30 md:z-10"}>
+      <div className={`bg-white md:w-5/12 h-4/6 ${m} rounded-lg mt-14 p-9 flex flex-col gap-y-7 justify-center items-center bg-opacity-70`}>
         {success ? (
-          <div className="w-4/5 rounded-lg bg-green-400 p-4 text-center">
+          <div className="md:w-4/5 rounded-lg bg-green-400 p-4 text-center">
             <p className="text-white">Success</p>
           </div>
         ) : (
