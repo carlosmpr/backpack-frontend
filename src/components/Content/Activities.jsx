@@ -3,6 +3,7 @@ import Banner from "../Banner";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import ActivityCard from "../Cards/ActivityCard";
+import Loading from "../Loading/Loading";
 export default function Activities() {
   // const token = useSelector((state) => state.login.token.token);
 
@@ -34,7 +35,7 @@ export default function Activities() {
 
   console.log(data);
   if (loading) {
-    return <p>Loading ....</p>;
+    return <Loading />;
   }
   return (
     <>

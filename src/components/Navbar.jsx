@@ -9,6 +9,8 @@ import { changePanel } from "../features/counter/locationsSlice";
 import FriendRequestNavItem from "./FriendRequest/FriendRequestNavItem";
 import FriendRequest from "./FriendRequest/FriendRequest";
 import InvitationNavItem from "./Invitations/InvitationsNavItem";
+import Loading from "./Loading/Loading";
+
 export default function Navbar() {
   let history = useHistory();
   const dispatch = useDispatch();
