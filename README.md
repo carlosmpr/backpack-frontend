@@ -1,44 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
-## Available Scripts
+# Backpack 
+ The app allows users to log in, create an account, upload user's profile pictures, and plan activities in different locations worldwide. Invite friends to your activities, see other users' reviews, like and leave a comment, real-time chat, and Fully responsive. 
 
-In the project directory, you can run:
+![Backpack Welcome Screen](https://menukomedemomenu.s3.amazonaws.com/Screen+Shot+2021-09-06+at+7.02.34+AM.png)
 
-### `npm start`
+![Backpack Welcome Screen](https://menukomedemomenu.s3.amazonaws.com/Screen+Shot+2021-09-06+at+7.02.46+AM.png)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Develop with React and Redux and is designed with tailwindcss. 
+
+> You will need the backpack backend server running on port 5000 to log in or create an account. Link:https://github.com/carlosmpr/backpack-backend
+
+## How to start the App
+
+### Run in the terminal
+    To install all app dependencies and configure tailwind css
+    npm install
+  
+
+
+### Run the App in development mode
+    npm start
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `npm test`
+>You can configure the tailwind.config.js to set your colors, styles, font, and more.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# ScreenShots
 
-### `npm run build`
+### Dashboard
+![Backpack Welcome Screen](https://menukomedemomenu.s3.amazonaws.com/Screen+Shot+2021-09-06+at+7.51.40+AM.png)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Backpack Welcome Screen](https://menukomedemomenu.s3.amazonaws.com/Screen+Shot+2021-09-06+at+7.59.49+AM.png)
+Mobile
+### Activities
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![Backpack Welcome Screen](https://menukomedemomenu.s3.amazonaws.com/Screen+Shot+2021-09-06+at+7.52.01+AM.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Backpack Welcome Screen](https://menukomedemomenu.s3.amazonaws.com/Screen+Shot+2021-09-06+at+8.00.13+AM.png)
+Mobile
 
-### `npm run eject`
+### Chat with Friends
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Backpack Welcome Screen](https://menukomedemomenu.s3.amazonaws.com/Screen+Shot+2021-09-06+at+7.53.15+AM.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Author
+>Develop by: Carlos Polanco<br>
+Linkedin: https://www.linkedin.com/in/carlosmpr/<br>
+Github: https://github.com/carlosmpr<br>
+Medium: https://cmpr.medium.com<br>
+Portfolio: https://carlosmpr.github.io/portfoliosite2/
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# License
+MIT License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Copyright (c) [2021] [Carlos Polanco]
 
-## Learn More
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
